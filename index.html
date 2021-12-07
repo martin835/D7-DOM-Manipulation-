@@ -50,7 +50,8 @@
 
     <main>
     <h1>Martin's e-shop</h1>
-   
+        <button id="hiding-button" onclick="hideImagesInTheTable()">Hide pictures</button>
+        <button id="colorchanging-button" onclick="changePricesColors()">Change prices colors</button>
       <table>
         <tr>
           <th>Product title</th>
@@ -63,35 +64,35 @@
             <td>Monitor</td>
             <td>White LCD</td>
             <td><img src="img\monitor.jpg" alt="White monitor"></td>
-            <td>$149.00</td>
+            <td class="price">$149.00</td>
             <td><a href="https://www.amazon.com/ASUS-VZ239H-W-1080p-Monitor-White/dp/B07489Q7TY/ref=sr_1_3?keywords=white+monitor&qid=1638883378&sr=8-3">Get here</a></td>
         </tr>
         <tr>
             <td>Mouse</td>
             <td>Optical mouse wireless</td>
             <td><img src="img\mouse.jpg" alt="White monitor"></td>
-            <td>$8.39</td>
+            <td class="price">$8.39</td>
             <td><a href="https://www.amazon.com/LeadsaiL-Wireless-Portable-Cordless-Adjustable/dp/B07C5RVGSZ/ref=sr_1_1_sspa?keywords=optical+mouse+wireless&qid=1638884061&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzMkdQMDlFS08xUlc5JmVuY3J5cHRlZElkPUEwNjg1MTY5MTgxQzBSVUJCN0Y1MSZlbmNyeXB0ZWRBZElkPUEwOTgyMDE4UkZLNFlDN0NHMkJNJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==">Get here</a></td>
           </tr>
           <tr>
             <td>Keyboard</td>
             <td>Wireless Keyboard White</td>
             <td><img src="img\keyboard.jpg" alt="White monitor"></td>
-            <td>$25.99</td>
+            <td class="price">$25.99</td>
             <td><a href="https://www.amazon.com/Wireless-Keyboard-JOYACCESS-Compact-Keyboard-White/dp/B07K6LW8TR/ref=sr_1_7?keywords=Keyboard+wireless+white&qid=1638884177&sr=8-7">Get here</a></td>
           </tr>
           <tr>
             <td>Joystick</td>
             <td> Compatible with PS3 & Windows</td>
             <td><img src="img\joystick.jpg" alt="White monitor"></td>
-            <td>$39.99</td>
+            <td class="price">$39.99</td>
             <td><a href="https://www.amazon.com/Thrustmaster-T-Flight-Stick-X-PS3-PC/dp/B000U1OOH4/ref=sr_1_10?keywords=Joystick+pc&qid=1638884268&sr=8-10">Get here</a></td>
           </tr>
           <tr>
             <td>HDMI Cable</td>
             <td> Basics High-Speed 4K HDMI Cable - 10 Feet</td>
             <td><img src="img\hdmi.jpg" alt="White monitor"></td>
-            <td>$8.99</td>
+            <td class="price">$8.99</td>
             <td><a href="https://www.amazon.com/AmazonBasics-High-Speed-HDMI-Cable-1-Pack/dp/B014I8T0YQ/ref=sr_1_1_sspa?keywords=HDMI+Cable&qid=1638884403&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzTFk3TU1KQU1NVE9XJmVuY3J5cHRlZElkPUEwMjgzNzI1MjdZR0hOVlhNMzc5TyZlbmNyeXB0ZWRBZElkPUEwNzYzMTI2M0o3RFVOQ1NORVBJMCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=">Get here</a></td>
           </tr>
       </table>
@@ -108,7 +109,7 @@
     <footer>
         <a href="index.html">Martin's e-shop ltd.</a> 
         <address>
-            <p>Visit us at: Unamned street 23, Orange town 12311</p>    
+            <p>Visit us at: Blue street 23, Orange town 12311</p>    
         </address>
     </footer>
     
@@ -133,6 +134,66 @@
         //EX9: Write a function to change the footer address with a fake one
 
         
+
+        const changeAddressToFake  = function(fakeAddress) {
+            let addressNode = document.querySelector("address p")
+            addressNode.innerHTML = fakeAddress 
+        }
+
+        changeAddressToFake("Visit us at: Fake street 42, Screw-u town 12311")
+        
+        //EX10: Write a function to add a CSS class to every Amazon link
+
+        
+        
+        const addStylesToAmazonLinks = function(newStyle) {
+            let allAmazonLinks = document.querySelectorAll("td a")
+
+            for (i=0; i<allAmazonLinks.length; i++) {
+            allAmazonLinks[i].classList.add(newStyle);
+            }
+        }
+
+        addStylesToAmazonLinks("myGreatStyle")
+
+        //EX11: Write a function to toggle a CSS class for all the images in the table; that class should set the visibility of the image
+
+        
+
+        const hideImagesInTheTable = function () {
+           
+            let allImagesInTheTable = document.querySelectorAll("td img")
+            let hidingButton = document.getElementById("hiding-button")
+
+            if (hidingButton.innerText !== "Show pictures") {
+
+                for (i = 0; i < allImagesInTheTable.length; i++) {
+            
+                allImagesInTheTable[i].style.visibility = "hidden";
+                }
+
+                hidingButton.innerText = "Show pictures"
+            } else if (hidingButton.innerText === "Show pictures") 
+                
+                {for (i = 0; i < allImagesInTheTable.length; i++) {
+            
+                allImagesInTheTable[i].style.visibility = "visible";
+                    }
+                    hidingButton.innerText = "Hide pictures"
+                }                       
+        }
+               
+
+        //EX12: Write a function to color the price of the products in a different one every time it's invoked
+
+        
+        const changePricesColors = function () {
+            let allPrices = document.querySelectorAll(".price")
+            for (i = 0; i < allPrices.length; i++) {
+                allPrices[i].style.color = "#" + Math.floor(Math.random()*16777215).toString(16);
+            }
+        }
+                
 
     </script>
 </body>
